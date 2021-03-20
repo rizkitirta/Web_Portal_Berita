@@ -26,20 +26,29 @@ Route::get('logout', function () {
     return redirect('login');
 });
 
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', 'Admin\Beranda_Controller@index');
 
     //Manage Category
     Route::get('category', 'Admin\Category_Controller@index')->name('category.index');
-    Route::get('category/add', 'Admin\Category_Controller@add')->name('category.add');   
+    Route::get('category/add', 'Admin\Category_Controller@add')->name('category.add');
     Route::post('category/add', 'Admin\Category_Controller@store')->name('category.store');
-    
-    //Edit & Update
-    Route::get('category/edit/{id}','Admin\Category_Controller@edit')->name('category.edit');
-    Route::post('category/edit/{id}','Admin\Category_Controller@update')->name('category.update');
-    Route::get('category/delete/{id}','Admin\Category_Controller@delete')->name('category.delete');
+
+    //Edit & Update Category
+    Route::get('category/edit/{id}', 'Admin\Category_Controller@edit')->name('category.edit');
+    Route::post('category/edit/{id}', 'Admin\Category_Controller@update')->name('category.update');
+    Route::delete('category/delete/{id}', 'Admin\Category_Controller@delete')->name('category.delete');
+
+    //Manage Article
+    Route::get('article', 'Admin\Article_Controller@index')->name('article.index');
+    Route::get('article/add', 'Admin\Article_Controller@add')->name('article.add');
+    Route::post('article/add', 'Admin\Article_Controller@store')->name('article.store');
+
+    //Article Edit
+    Route::get('article/edit/{article_id}', 'Admin\Article_Controller@edit')->name('article.edit');
+    Route::post('article/edit/{article_id}', 'Admin\Article_Controller@update')->name('article.update');
+    Route::delete('article/delete/{article_id}', 'Admin\Article_Controller@delete')->name('article.delete');
 
 });
 

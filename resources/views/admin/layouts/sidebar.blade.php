@@ -13,10 +13,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../kanban.html" class="nav-link">
+            <a href="{{ Route('article.index') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
-                Kanban Board
+                Article
               </p>
             </a>
           </li>

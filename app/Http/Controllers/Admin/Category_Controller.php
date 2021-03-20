@@ -39,7 +39,7 @@ class Category_Controller extends Controller
             'updated_at' => date('Y-m-d H-i-s'),
         ]);
 
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category Berhasil Ditambahkan');
     }
 
     public function edit($id)
@@ -73,6 +73,6 @@ class Category_Controller extends Controller
         ->where('id',$id)
         ->delete();
 
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category Berhasil Dihapus');
     }
 }
