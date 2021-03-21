@@ -26,6 +26,8 @@ Route::get('logout', function () {
     return redirect('login');
 });
 
+    Route::get('detail/{article_id}', 'Admin\Beranda_Controller@detail')->name('beranda.detail');
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', 'Admin\Beranda_Controller@index');
@@ -49,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('article/edit/{article_id}', 'Admin\Article_Controller@edit')->name('article.edit');
     Route::post('article/edit/{article_id}', 'Admin\Article_Controller@update')->name('article.update');
     Route::delete('article/delete/{article_id}', 'Admin\Article_Controller@delete')->name('article.delete');
+
+
 
 });
 
