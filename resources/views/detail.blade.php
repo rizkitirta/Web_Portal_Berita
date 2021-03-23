@@ -144,4 +144,105 @@
                     <!-- /reply -->
                 </div>
                 <!-- /Post content -->
-            @endsection
+
+                <!-- aside -->
+                <div class="col-md-4">
+                    <!-- ad -->
+                    <div class="aside-widget text-center">
+                        <a href="#" style="display: inline-block;margin: auto;">
+                            <img class="img-responsive" src="./img/ad-1.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- /ad -->
+
+                    <!-- post widget -->
+                    <div class="aside-widget">
+                        <div class="section-title">
+                            <h2>Most Read</h2>
+                        </div>
+                        @foreach ($articles as $item)
+                            <div class="post post-widget">
+                                <a class="post-img" href="blog-post.html"><img
+                                        src="{{ asset('upload/' . $item->gambar) }}" alt=""></a>
+                                <div class="post-body">
+                                    <h3 class="post-title"><a href="blog-post.html">{{ $item->judul }}</a></h3>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                    </div>
+                    <!-- /post widget -->
+
+                    <!-- post widget -->
+
+                    @foreach ($random as $item)
+                        <div class="aside-widget">
+                            <div class="section-title">
+                                <h2>Featured Posts</h2>
+                            </div>
+                            <div class="post post-thumb">
+                                <a class="post-img" href="blog-post.html"><img
+                                        src="{{ asset('upload/' . $item->gambar) }}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-3" href="#">{{ $item->nama }}</a>
+                                        <span class="post-date">{{ date('d-m-Y',strtotime($item->created_at)) }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use
+                                            JQuery?</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    <!-- /post widget -->
+
+
+
+                    <!-- catagories -->
+                    <div class="aside-widget">
+                        <div class="section-title">
+                            <h2>Catagories</h2>
+                        </div>
+                        <div class="category-widget">
+                            <ul>
+                                @php
+                                    $categories = DB::table('categories')->get();
+                                @endphp
+                                @foreach ($categories as $category)
+                                    @php
+                                        $total = DB::table('article')
+                                            ->where('category_id', $category->id)
+                                            ->count();
+                                    @endphp
+                                    <li><a href="{{ route('article.category', $category->id) }}"
+                                            class="cat-2">{{ $category->nama }}<span>{{ $total }}</span></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /catagories -->
+
+
+                    <!-- tags -->
+                    <div class="aside-widget">
+                        <div class="tags-widget">
+                            <ul>
+                                <li><a href="#">Chrome</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">Tutorial</a></li>
+                                <li><a href="#">Backend</a></li>
+                                <li><a href="#">JQuery</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                                <li><a href="#">Website</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /tags -->
+
+                    <!-- /Post content -->
+                @endsection

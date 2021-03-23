@@ -16,7 +16,12 @@ class Beranda_Controller extends Controller
             ->orderby('created_at', 'desc')
             ->paginate(5);
 
-        return view('welcome', compact('articles'));
+        $random = \DB::table('article')
+            ->join('categories', 'article.category_id', '=', 'categories.id')
+            ->select('article.article_id', 'article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
+            ->limit(2)->inRandomOrder()->get();
+
+        return view('welcome', compact('articles', 'random'));
     }
 
     public function search(Request $request)
@@ -24,13 +29,13 @@ class Beranda_Controller extends Controller
         $search = $request->search;
         $articles = \DB::table('article')
             ->join('categories', 'article.category_id', '=', 'categories.id')
-            ->where('article.judul','like','%'.$search.'%')
-            ->orWhere('article.isi','like','%'.$search.'%')
+            ->where('article.judul', 'like', '%' . $search . '%')
+            ->orWhere('article.isi', 'like', '%' . $search . '%')
             ->select('article.article_id', 'article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
             ->orderby('created_at', 'desc')
             ->paginate();
 
-            return view('welcome',compact('articles'));
+        return view('welcome', compact('articles'));
 
     }
 
@@ -43,13 +48,24 @@ class Beranda_Controller extends Controller
 
     public function detail($article_id)
     {
+        $random = \DB::table('article')
+            ->join('categories', 'article.category_id', '=', 'categories.id')
+            ->select('article.article_id', 'article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
+            ->limit(2)->inRandomOrder()->get();
+
+        $articles = \DB::table('article')
+            ->join('categories', 'article.category_id', '=', 'categories.id')
+            ->select('article.article_id', 'article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
+            ->orderby('created_at', 'desc')
+            ->paginate(5);
+
         $article = DB::table('article')->where('article_id', $article_id)
             ->join('users', 'article.user_id', '=', 'users.id')
             ->first();
         $comments = DB::table('comments')->where('article_id', $article_id)->get();
         $totalComments = DB::table('comments')->where('article_id', $article_id)->count();
 
-        return view('detail', compact('article', 'comments', 'totalComments'));
+        return view('detail', compact('article', 'comments', 'totalComments', 'articles','random'));
     }
 
     public function comments(Request $request, $article_id)

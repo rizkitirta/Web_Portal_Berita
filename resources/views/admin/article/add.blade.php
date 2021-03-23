@@ -30,7 +30,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="article">Judul Article</label>
-                    <input type="text" class="form-control" id="article" placeholder="Enter Article" name="judul">
+                    <input type="text" class="form-control" id="article" placeholder="Enter Article" name="judul"  value="{{ old('judul') }}">
                 </div>
                 <div class="form-group">
                     <label>Category</label>
@@ -42,7 +42,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea id="summernote" name="isi"></textarea>
+                    <textarea id="summernote" name="isi">{{{ old('isi') }}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">File input</label>
