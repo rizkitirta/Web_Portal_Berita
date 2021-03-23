@@ -1,3 +1,5 @@
+@extends('layouts.master')
+@section('content')
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -11,13 +13,7 @@
                         </div>
                     </div>
                     <!-- post -->
-                    @php
-                        $articles = \DB::table('article')
-                            ->join('categories', 'article.category_id', '=', 'categories.id')
-                            ->select('article.article_id','article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
-                            ->orderby('created_at', 'desc')
-                            ->get();
-                    @endphp
+                    
                     @foreach ($articles as $article)
                         <div class="col-md-12">
                             <div class="post post-row">
@@ -53,3 +49,6 @@
     </div>
     <!-- /container -->
 </div>
+
+	
+@endsection

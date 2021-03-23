@@ -1,4 +1,5 @@
 @extends('layouts.master')
-@section('content')
-	
+@section('header')
+	@include('layouts.header')
+	@include('layouts.recent')
 @endsection

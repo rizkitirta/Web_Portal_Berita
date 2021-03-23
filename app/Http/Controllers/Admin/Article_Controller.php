@@ -15,7 +15,7 @@ class Article_Controller extends Controller
         $articles = DB::table('article')
             ->join('users', 'article.user_id', '=', 'users.id')
             ->join('categories', 'article.category_id', '=', 'categories.id')
-            ->select('article.article_id', 'article.judul', 'article.created_at', 'users.name', 'categories.nama')
+            ->select('article.article_id', 'article.judul','article.gambar','article.created_at', 'users.name', 'categories.nama')
             ->where('article.user_id', \Auth::user()->id)
             ->orderBy('nama', 'desc')
             ->get();

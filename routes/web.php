@@ -26,7 +26,11 @@ Route::get('logout', function () {
     return redirect('login');
 });
 
-    Route::get('detail/{article_id}', 'Admin\Beranda_Controller@detail')->name('beranda.detail');
+//Frontend
+Route::get('detail/{article_id}', 'Admin\Beranda_Controller@detail')->name('beranda.detail');
+Route::post('comments/{article_id}', 'Admin\Beranda_Controller@comments')->name('beranda.comments');
+Route::get('article/categories/{id}','Admin\Beranda_Controller@category')->name('article.category');
+
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -52,7 +56,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('article/edit/{article_id}', 'Admin\Article_Controller@update')->name('article.update');
     Route::delete('article/delete/{article_id}', 'Admin\Article_Controller@delete')->name('article.delete');
 
+    //Manage Commentar
+    Route::get('comments','Admin\Comment_Controller@index')->name('manage.comments');
+    Route::delete('comments/delete/{comment_id}','Admin\Comment_Controller@delete')->name('delete.comment');
 
+
+    //Manage Iklan
+    Route::get('ads','Admin\Iklan_Controller@index')->name('ads.index');
+    Route::post('ads','Admin\Iklan_Controller@store')->name('ads.store');
 
 });
 

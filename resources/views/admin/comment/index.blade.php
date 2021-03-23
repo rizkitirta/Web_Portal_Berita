@@ -3,11 +3,11 @@
 
     <div class="card mt-5">
         <div class="card-header">
-            <h3 class="card-title text-bold">Manage Article</h3>
+            <h3 class="card-title text-bold">Manage Commentar</h3>
         </div>
+
         <!-- /.card-header -->
         <div class="card-body">
-
             @if (session('success'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -21,41 +21,38 @@
                 </div>
             @endif
 
-            <a href="{{ route('article.add') }}" class="btn btn-success mb-2 ">Tambah Article</a>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr class="text-center">
                         <th>#</th>
-                        <th>Judul</th>
-                        <th>Category</th>
-                        <th>Gambar</th>
-                        <th>Created By</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
+                        <th>Article</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <th>Isi</th>
+						<th>Created At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($articles as $index => $article)
+                    @foreach ($comments as $index => $comment)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $article->judul }}</td>
-                            <td>{{ $article->nama }}</td>
-                            <td>{{ $article->gambar }}</td>
-                            <td>{{ $article->name }}</td>
-                            <td>{{ $article->created_at }}</td>
+                            <td>{{ $comment->judul }}</td>
+                            <td>{{ $comment->nama }}</td>
+                            <td>{{ $comment->email }}</td>
+                            <td>{{ $comment->website }}</td>
+                            <td>{{ $comment->isi }}</td>
+                            <td>{{ $comment->created_at }}</td>
                             <td class="text-center">
-                                <a href="{{ route('article.edit', $article->article_id) }}"
-                                    class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Edit</a>
-                                <a href="{{ route('article.delete', $article->article_id) }}"
-                                    class="btn btn-sm btn-danger btn-delete"><i class="fas fa-trash-alt"></i>
-                                    Delete</a>
+                                <a href="{{ route('delete.comment',$comment->comment_id) }}"
+                                    class="btn btn-sm btn-danger btn-delete mt-2"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
     </div>
     <!-- /.card -->
 
@@ -99,5 +96,6 @@
             });
 
         })
+
     </script>
 @endsection
