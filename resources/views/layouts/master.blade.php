@@ -56,12 +56,10 @@
 
                     <!-- search & aside toggle -->
                     <div class="nav-btns">
-                        <button class="aside-btn"><i class="fa fa-bars"></i></button>
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
-                        <div class="search-form">
-                            <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
-                            <button class="search-close"><i class="fa fa-times"></i></button>
-                        </div>
+                        <form class="form-inline" action="{{ route('search') }}" method="GET">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </div>
                     <!-- /search & aside toggle -->
                 </div>
@@ -142,9 +140,9 @@
             <!-- row -->
             <div class="row">
                 <!-- container -->
-                     @yield('content')   
+                @yield('content')
                 <!-- /container -->
-            </div>           
+            </div>
         </div>
     </div>
 

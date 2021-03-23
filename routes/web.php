@@ -17,16 +17,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Admin\Beranda_Controller@view');
+Route::get('/list','Admin\Beranda_Controller@search')->name('search');
+
 
 Route::get('logout', function () {
     Auth::logout();
     return redirect('login');
 });
 
-//Frontend
+
 Route::get('detail/{article_id}', 'Admin\Beranda_Controller@detail')->name('beranda.detail');
 Route::post('comments/{article_id}', 'Admin\Beranda_Controller@comments')->name('beranda.comments');
 Route::get('article/categories/{id}','Admin\Beranda_Controller@category')->name('article.category');

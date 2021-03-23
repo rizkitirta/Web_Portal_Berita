@@ -11,13 +11,6 @@
                         </div>
                     </div>
                     <!-- post -->
-                    @php
-                        $articles = \DB::table('article')
-                            ->join('categories', 'article.category_id', '=', 'categories.id')
-                            ->select('article.article_id','article.judul', 'article.isi', 'article.gambar', 'article.created_at', 'categories.nama')
-                            ->orderby('created_at', 'desc')
-                            ->get();
-                    @endphp
                     @foreach ($articles as $article)
                         <div class="col-md-12">
                             <div class="post post-row">
@@ -36,13 +29,14 @@
                             </div>
                         </div>
                     @endforeach
+                    {{ $articles->links() }}
                     <!-- /post -->
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="section-row">
                             <button class="primary-button center-block">Load More</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
        
