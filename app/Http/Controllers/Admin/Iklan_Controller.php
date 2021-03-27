@@ -28,7 +28,6 @@ class Iklan_Controller extends Controller
             $destinationPath = 'upload';
             $file->move($destinationPath, $file->getClientOriginalName());
 
-
             DB::table('iklan')->insert([
                 'url' => $request->url,
                 'gambar' => $file->getClientOriginalName(),

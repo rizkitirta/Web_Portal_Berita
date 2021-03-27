@@ -158,7 +158,7 @@
                     <!-- post widget -->
                     <div class="aside-widget">
                         <div class="section-title">
-                            <h2>Most Read</h2>
+                            <h2>Postingan Terbaru</h2>
                         </div>
                         @foreach ($articles as $item)
                             <div class="post post-widget">
@@ -179,7 +179,7 @@
                     @foreach ($random as $item)
                         <div class="aside-widget">
                             <div class="section-title">
-                                <h2>Featured Posts</h2>
+                                <h2>Random Posts</h2>
                             </div>
                             <div class="post post-thumb">
                                 <a class="post-img" href="blog-post.html"><img
@@ -187,7 +187,7 @@
                                 <div class="post-body">
                                     <div class="post-meta">
                                         <a class="post-category cat-3" href="#">{{ $item->nama }}</a>
-                                        <span class="post-date">{{ date('d-m-Y',strtotime($item->created_at)) }}</span>
+                                        <span class="post-date">{{ date('d-m-Y', strtotime($item->created_at)) }}</span>
                                     </div>
                                     <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use
                                             JQuery?</a>
@@ -198,8 +198,6 @@
                     @endforeach
 
                     <!-- /post widget -->
-
-
 
                     <!-- catagories -->
                     <div class="aside-widget">
@@ -224,25 +222,6 @@
                         </div>
                     </div>
                     <!-- /catagories -->
-
-
-                    <!-- tags -->
-                    <div class="aside-widget">
-                        <div class="tags-widget">
-                            <ul>
-                                <li><a href="#">Chrome</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">Tutorial</a></li>
-                                <li><a href="#">Backend</a></li>
-                                <li><a href="#">JQuery</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">JavaScript</a></li>
-                                <li><a href="#">Website</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /tags -->
 
                     <!-- /Post content -->
                 @endsection

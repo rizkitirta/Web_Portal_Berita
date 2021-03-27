@@ -3,11 +3,11 @@
 
     <div class="card mt-5">
         <div class="card-header">
-            <h3 class="card-title text-bold">Manage Commentar</h3>
+            <h3 class="card-title text-bold">Manage User</h3>
         </div>
-
         <!-- /.card-header -->
         <div class="card-body">
+
             @if (session('success'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -21,38 +21,36 @@
                 </div>
             @endif
 
+            <a href="{{ route('user.add') }}" class="btn btn-success mb-2 ">Tambah User</a>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr class="text-center">
                         <th>#</th>
-                        <th>Article</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Website</th>
-                        <th>Isi</th>
-                        <th>Created At</th>
-                        <th>Action</th>
+                        <th>Password</th>
+						<th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($comments as $index => $comment)
+                    @foreach ($users as $index => $user)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $comment->judul }}</td>
-                            <td>{{ $comment->nama }}</td>
-                            <td>{{ $comment->email }}</td>
-                            <td>{{ $comment->website }}</td>
-                            <td>{{ $comment->isi }}</td>
-                            <td>{{ $comment->created_at }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->password }}</td>
                             <td class="text-center">
-                                <a href="{{ route('delete.comment', $comment->comment_id) }}"
-                                    class="btn btn-sm btn-danger btn-delete mt-2"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{ route('user.edit', $user->id) }}"
+                                    class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('user.delete', $user->id) }}"
+                                    class="btn btn-sm btn-danger btn-delete"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <!-- /.card-body -->
     </div>
     <!-- /.card -->
 
@@ -96,6 +94,5 @@
             });
 
         })
-
     </script>
 @endsection

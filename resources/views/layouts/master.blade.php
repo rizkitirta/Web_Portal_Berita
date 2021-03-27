@@ -47,7 +47,7 @@
 
                     <!-- nav -->
                     <ul class="nav-menu nav navbar-nav">
-                        <li><a href="category.html">News</a></li>
+                        <li><a href="">News</a></li>
                         <li><a href="category.html">Popular</a></li>
                         <li class="cat-1"><a href="category.html">Web Design</a></li>
                         <li class="cat-2"><a href="category.html">Tutorial</a></li>
@@ -81,38 +81,6 @@
                     </ul>
                 </div>
                 <!-- /nav -->
-
-                <!-- widget posts -->
-                <div class="section-row">
-                    <h3>Recent Posts</h3>
-                    <div class="post post-widget">
-                        <a class="post-img" href="blog-post.html"><img src="{{ asset('webmag/img/widget-2.jpg') }}"
-                                alt=""></a>
-                        <div class="post-body">
-                            <h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website
-                                    Design Mockup Into Code Automatically</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="post post-widget">
-                        <a class="post-img" href="blog-post.html"><img src="{{ asset('webmag/img/widget-3.jpg') }}"
-                                alt=""></a>
-                        <div class="post-body">
-                            <h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The
-                                    Backend Development Block!</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="post post-widget">
-                        <a class="post-img" href="blog-post.html"><img src="{{ asset('webmag/img/widget-4.jpg') }}"
-                                alt=""></a>
-                        <div class="post-body">
-                            <h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And
-                                    Development Tools</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- /widget posts -->
 
                 <!-- social links -->
                 <div class="section-row">

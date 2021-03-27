@@ -1,17 +1,56 @@
   <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+  
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                    <i class="fas fa-cogs fa-2x text-white"></i>
+                </div>
+                <div class="info text-white">
+                    <h5>{{ \Auth::user()->name }}</h5>
+                </div>
+            </div>
 
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">
+             <a class="nav-header">
+                 <i class="fas fa-tachometer-alt fa-2x"></i>
+                 Dashboard 
+             </a>
+          </li>
           <li class="nav-item">
-              <a href="{{ route('category.index') }}" class="nav-link">
-                  <i class="fa fa-fw fa-tags"></i>
+              <a href="{{ route('dashboard') }}" class="nav-link">
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
-                      Category
+                      Home
                   </p>
               </a>
           </li>
+          @if (\Auth::user()->name == 'admin')
+              <li class="nav-item">
+                  <a href="{{ route('category.index') }}" class="nav-link">
+                      <i class="fa fa-fw fa-tags"></i>
+                      <p>
+                          Category
+                      </p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{{ route('ads.index') }}" class="nav-link">
+                      <i class="fa fa-fw fa-bullhorn"></i>
+                      <p>
+                          Ads
+                      </p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{{ route('user.index') }}" class="nav-link ">
+                      <i class="fa fa-fw fa-users"></i>
+                      <p>
+                          User
+                      </p>
+                  </a>
+              </li>
+          @endif
+
           <li class="nav-item">
               <a href="{{ Route('article.index') }}" class="nav-link">
                   <i class="nav-icon fas fa-book"></i>
@@ -22,270 +61,24 @@
           </li>
           <li class="nav-item">
               <a href="{{ route('manage.comments') }}" class="nav-link">
-                  <i class="nav-icon far fa-comment"></i>
+                  <i class="nav-icon far fa-comments"></i>
                   <p>
                       Comments
                   </p>
               </a>
 
           </li>
-          <li class="nav-item">
-              <a href="{{ route('ads.index') }}" class="nav-link">
-                  <i class="fa fa-fw fa-bullhorn"></i>
-                  <p>
-                      Ads
-                  </p>
-              </a>
 
-          </li>
-          <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                  <i class="nav-icon far fa-plus-square"></i>
-                  <p>
-                      Extras
-                      <i class="fas fa-angle-left right"></i>
-                  </p>
-              </a>
-              <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Login & Register v1
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="../examples/login.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Login v1</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/register.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Register v1</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/forgot-password.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Forgot Password v1</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/recover-password.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Recover Password v1</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Login & Register v2
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="../examples/login-v2.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Login v2</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/register-v2.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Register v2</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/forgot-password-v2.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Forgot Password v2</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../examples/recover-password-v2.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Recover Password v2</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/lockscreen.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Lockscreen</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/legacy-user-menu.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Legacy User Menu</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/language-menu.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Language Menu</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/404.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Error 404</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/500.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Error 500</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/pace.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Pace</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../examples/blank.html" class="nav-link active">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Blank Page</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../../starter.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Starter Page</p>
-                      </a>
-                  </li>
-              </ul>
-          </li>
+          <li class="nav-header">Lainnya</li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>
-                      Search
-                      <i class="fas fa-angle-left right"></i>
-                  </p>
-              </a>
-              <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                      <a href="../search/simple.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Simple Search</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="../search/enhanced.html" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Enhanced</p>
-                      </a>
-                  </li>
-              </ul>
-          </li>
-          <li class="nav-header">MISCELLANEOUS</li>
-          <li class="nav-item">
-              <a href="../../iframe.html" class="nav-link">
-                  <i class="nav-icon fas fa-ellipsis-h"></i>
-                  <p>Tabbed IFrame Plugin</p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                  <i class="nav-icon fas fa-file"></i>
-                  <p>Documentation</p>
-              </a>
-          </li>
-          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Level 1</p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-circle"></i>
-                  <p>
-                      Level 1
-                      <i class="right fas fa-angle-left"></i>
-                  </p>
-              </a>
-              <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Level 2</p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                              Level 2
-                              <i class="right fas fa-angle-left"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-dot-circle nav-icon"></i>
-                                  <p>Level 3</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-dot-circle nav-icon"></i>
-                                  <p>Level 3</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-dot-circle nav-icon"></i>
-                                  <p>Level 3</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Level 2</p>
-                      </a>
-                  </li>
-              </ul>
-          </li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Level 1</p>
-              </a>
-          </li>
-          <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Important</p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Warning</p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Informational</p>
+              <a href="{{ route('logout') }}" class="nav-link">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>Logout</p>
               </a>
           </li>
       </ul>
+      <br>
+      <br>
+      <br>
+      <br>
   </nav>
